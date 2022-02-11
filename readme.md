@@ -1,4 +1,6 @@
-Jester Framework
-================
+![logo](https://raw.githubusercontent.com/CraicOverflow89/jester-framework/master/docs/logo.png)
 
-Lightweight PHP framework.
+Jester PHP Framework
+====================
+
+Lightweight PHP 8.1 framework.
