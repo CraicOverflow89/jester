@@ -29,11 +29,11 @@ class Request {
 			if(strlen($query) < 1) return [];
 
 			// Parsed Query
-			return Stream(explode('&', $query)) -> map(
+			return Stream(explode('&', $query))->map(
 				function($_, $v) {
 					return explode('=', $v);
 				}
-			) -> toArray();
+			)->toArray();
 		})();
 
 		// Debug Request
@@ -44,7 +44,7 @@ class Request {
 
 		// Match Route
 		$variableMatch = null;
-		$routeMatch = Stream(Routes::list()) -> first(function($_, $v) use (&$variableMatch) {
+		$routeMatch = Stream(Routes::list())->first(function($_, $v) use (&$variableMatch) {
 
 			// Method Mismatch
 			if($v['method'] !== self::$method) return false;
