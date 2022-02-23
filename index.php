@@ -1,5 +1,8 @@
 <?php
 
+// Include Dependencies
+require_once '../vendor/autoload.php';
+
 // Include Framework
 require_once 'jester/app.php';
 
@@ -7,7 +10,7 @@ require_once 'jester/app.php';
 use \Jester\JesterFramework;
 
 // Framework Settings
-//JesterFramework::setRouteFallback('/invalid');
+JesterFramework::createTwig();
 
 // Invoke Framework
 JesterFramework::invoke();

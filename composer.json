@@ -1,0 +1,17 @@
+{
+    "name": "jamie/app",
+    "require": {
+        "twig/twig": "3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jamie\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CraicOverflow89",
+            "email": "craic.overflow@hotmail.com"
+        }
+    ]
+}

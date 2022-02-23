@@ -10,7 +10,9 @@ function includeDirectory($path) {
 	if(!is_dir($path)) return;
 	foreach(scandir($path) as $file) {
 		if($file !== '.' && $file !== '..') {
-			include_once($path . '/' . $file);
+			$fullPath = $path . '/' . $file;
+			if(is_dir($fullPath)) includeDirectory($fullPath);
+			else require_once($fullPath);
 		}
 	}
 }
@@ -30,6 +32,20 @@ use \Jester\Libraries\Request;
 class JesterFramework {
 
 	private static $ROUTE_FALLBACK = null;
+	public static $TWIG;
+
+	public static function createTwig(): void {
+		self::$TWIG = new \Twig\Environment(new \Twig\Loader\FilesystemLoader('app/views'));
+	}
+
+	/**
+	 * Gets the fallback route for when invalid routes are called
+	 *
+	 * @return string
+	 */
+	public static function getRouteFallback() {
+		return self::$ROUTE_FALLBACK;
+	}
 
 	/**
 	 * Invokes the main application runtime
@@ -52,15 +68,6 @@ class JesterFramework {
 
 		// Execute Request
 		Request::invoke();
-	}
-
-	/**
-	 * Gets the fallback route for when invalid routes are called
-	 *
-	 * @return string
-	 */
-	public static function getRouteFallback() {
-		return self::$ROUTE_FALLBACK;
 	}
 
 	/**
